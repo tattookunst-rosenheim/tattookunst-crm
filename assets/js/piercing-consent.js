@@ -15,6 +15,7 @@
         }
 
         app.dataset.consentInitialized = 'true';
+
         const style = document.createElement('style');
         style.textContent = `
             .tk-consent-intro {
@@ -159,64 +160,6 @@
                 cursor: pointer;
             }
 
-            .tk-minor-notice {
-                margin-top: 22px;
-                padding: 18px;
-                border: 2px solid #d5a900;
-                border-radius: 14px;
-                background: #fff7c7;
-                color: #3b3100;
-                line-height: 1.6;
-            }
-
-            .tk-minor-notice strong {
-                display: block;
-                margin-bottom: 7px;
-                font-size: 18px;
-            }
-
-            .tk-guardian-block {
-                margin-top: 18px;
-                padding: 20px;
-                border: 1px solid var(--tk-border);
-                border-radius: 14px;
-                background: #fafafa;
-            }
-
-            .tk-guardian-block h4 {
-                margin: 0 0 14px;
-                font-size: 19px;
-            }
-
-            .tk-guardian-fields {
-                display: grid;
-                grid-template-columns: 2fr 1fr;
-                gap: 14px;
-                margin-bottom: 16px;
-            }
-
-            .tk-guardian-fields label {
-                display: grid;
-                gap: 7px;
-                font-weight: 700;
-            }
-
-            .tk-guardian-fields input,
-            .tk-guardian-fields select {
-                width: 100%;
-                min-height: 46px;
-                padding: 10px 12px;
-                border: 1px solid var(--tk-border);
-                border-radius: 9px;
-                background: #fff;
-                color: inherit;
-                font: inherit;
-            }
-
-            .tk-guardian-consent {
-                margin-bottom: 18px;
-            }
-
             .tk-consent-meta {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -256,6 +199,48 @@
                 border-radius: 10px;
                 background: #f0faef;
                 line-height: 1.55;
+            }
+
+            .tk-guardian-section {
+                margin: 24px 0;
+                padding: 20px;
+                border: 2px solid #b58a00;
+                border-radius: 14px;
+                background: #fff8db;
+            }
+
+            .tk-guardian-warning {
+                margin: 0 0 18px;
+                padding: 14px 16px;
+                border-radius: 10px;
+                background: #ffe9a8;
+                font-weight: 700;
+                line-height: 1.55;
+            }
+
+            .tk-guardian-fields {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+                margin-bottom: 18px;
+            }
+
+            .tk-guardian-field {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+            }
+
+            .tk-guardian-field label {
+                font-weight: 700;
+            }
+
+            .tk-guardian-field input {
+                min-height: 48px;
+                padding: 11px 13px;
+                border: 2px solid var(--tk-border);
+                border-radius: 10px;
+                font: inherit;
             }
 
             @media (max-width: 650px) {
@@ -369,7 +354,7 @@
                             Ich willige unter Berücksichtigung aller Angaben in die Durchführung des gewünschten Piercings
                             gemäß § 228 StGB ein.
                         </li>
-                        <li id="tk-age-consent-text">Ich habe das 18. Lebensjahr vollendet.</li>
+                        <li>Bei minderjährigen Personen erfolgt die Einwilligung zusätzlich durch eine anwesende erziehungsberechtigte Person.</li>
                         <li>
                             Ich habe keine Substanzen eingenommen, die meine Wahrnehmung, meinen freien Willen oder mein
                             Urteilsvermögen einschränken.
@@ -400,6 +385,41 @@
                     </label>
                 </div>
 
+                <section class="tk-guardian-section" id="tk-guardian-section" hidden>
+                    <h4>Einwilligung der erziehungsberechtigten Person</h4>
+                    <p class="tk-guardian-warning">
+                        Wichtig: Eine erziehungsberechtigte Person muss am Tag des Piercingtermins persönlich anwesend sein.
+                        Eine allein zu Hause ausgefüllte Einverständniserklärung reicht nicht aus.
+                    </p>
+                    <p>
+                        Ich bestätige, dass ich erziehungsberechtigt bin und in die Durchführung des ausgewählten Piercings
+                        bei der minderjährigen Person einwillige. Ich habe die Risikoaufklärung gelesen und verstanden.
+                    </p>
+                    <div class="tk-guardian-fields">
+                        <div class="tk-guardian-field">
+                            <label for="tk-guardian-name">Vor- und Nachname *</label>
+                            <input type="text" id="tk-guardian-name" name="guardian_name">
+                        </div>
+                        <div class="tk-guardian-field">
+                            <label for="tk-guardian-relation">Verhältnis zur minderjährigen Person *</label>
+                            <input type="text" id="tk-guardian-relation" name="guardian_relation" placeholder="z. B. Mutter, Vater">
+                        </div>
+                    </div>
+                    <div class="tk-signature-block">
+                        <h4>Unterschrift der erziehungsberechtigten Person *</h4>
+                        <p class="tk-signature-note">Bitte mit Finger, Stift oder Maus unterschreiben.</p>
+                        <div class="tk-signature-canvas-wrap">
+                            <canvas class="tk-signature-canvas" id="tk-guardian-signature-canvas" aria-label="Unterschriftsfeld der erziehungsberechtigten Person"></canvas>
+                            <div class="tk-signature-line"></div>
+                            <div class="tk-signature-caption">Unterschrift Erziehungsberechtigte/r</div>
+                        </div>
+                        <div class="tk-signature-actions">
+                            <button type="button" class="tk-signature-clear" id="tk-guardian-signature-clear">Unterschrift löschen</button>
+                        </div>
+                        <input type="hidden" id="tk-guardian-signature-data" name="guardian_signature_data" value="">
+                    </div>
+                </section>
+
                 <div class="tk-signature-block">
                     <h4>Digitale Unterschrift *</h4>
                     <p class="tk-signature-note">
@@ -411,7 +431,6 @@
                             class="tk-signature-canvas"
                             id="tk-signature-canvas"
                             aria-label="Unterschriftsfeld"
-                            tabindex="0"
                         ></canvas>
                         <div class="tk-signature-line"></div>
                         <div class="tk-signature-caption">Unterschrift Kunde</div>
@@ -424,58 +443,6 @@
                     </div>
 
                     <input type="hidden" id="tk-signature-data" name="signature_data" value="">
-                </div>
-
-                <div id="tk-minor-section" hidden>
-                    <div class="tk-minor-notice" role="alert">
-                        <strong>⚠️ Wichtiger Hinweis für Minderjährige</strong>
-                        Bei minderjährigen Kunden muss ein Erziehungsberechtigter am Tag des Piercing-Termins persönlich anwesend sein.
-                        Eine vorab unterschriebene Einverständniserklärung allein reicht nicht aus. Das Piercing kann nur durchgeführt
-                        werden, wenn der Erziehungsberechtigte beim Termin anwesend ist und sich auf Verlangen mit einem gültigen
-                        Ausweisdokument ausweisen kann.
-                    </div>
-
-                    <div class="tk-guardian-block">
-                        <h4>Einverständniserklärung des Erziehungsberechtigten</h4>
-
-                        <div class="tk-guardian-fields">
-                            <label>
-                                Vor- und Nachname des Erziehungsberechtigten *
-                                <input type="text" id="tk-guardian-name" name="guardian_name" autocomplete="name">
-                            </label>
-                            <label>
-                                Beziehung *
-                                <select id="tk-guardian-relation" name="guardian_relation">
-                                    <option value="">Bitte auswählen</option>
-                                    <option value="Mutter">Mutter</option>
-                                    <option value="Vater">Vater</option>
-                                    <option value="Erziehungsberechtigter">Erziehungsberechtigter</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <label class="tk-consent-check tk-guardian-consent">
-                            <input type="checkbox" id="tk-guardian-consent" name="guardian_consent" value="1">
-                            <span>
-                                Ich bestätige, dass ich erziehungsberechtigt bin, persönlich beim Piercing-Termin anwesend sein werde
-                                und in die Durchführung des ausgewählten Piercings bei der minderjährigen Person einwillige. *
-                            </span>
-                        </label>
-
-                        <div class="tk-signature-block">
-                            <h4>Digitale Unterschrift des Erziehungsberechtigten *</h4>
-                            <p class="tk-signature-note">Bitte mit Finger, Stift oder Maus im Feld unterschreiben.</p>
-                            <div class="tk-signature-canvas-wrap">
-                                <canvas class="tk-signature-canvas" id="tk-guardian-signature-canvas" aria-label="Unterschriftsfeld des Erziehungsberechtigten" tabindex="0"></canvas>
-                                <div class="tk-signature-line"></div>
-                                <div class="tk-signature-caption">Unterschrift Erziehungsberechtigter</div>
-                            </div>
-                            <div class="tk-signature-actions">
-                                <button type="button" class="tk-signature-clear" id="tk-guardian-signature-clear">Unterschrift löschen</button>
-                            </div>
-                            <input type="hidden" id="tk-guardian-signature-data" name="guardian_signature_data" value="">
-                        </div>
-                    </div>
                 </div>
 
                 <div class="tk-consent-meta">
@@ -517,15 +484,47 @@
         const successBox = step.querySelector('#tk-consent-success');
         const dateLabel = step.querySelector('#tk-consent-date');
         const dateValue = step.querySelector('#tk-consent-date-value');
-        const minorSection = step.querySelector('#tk-minor-section');
-        const ageConsentText = step.querySelector('#tk-age-consent-text');
+        const context = canvas.getContext('2d');
+        const guardianSection = step.querySelector('#tk-guardian-section');
         const guardianName = step.querySelector('#tk-guardian-name');
         const guardianRelation = step.querySelector('#tk-guardian-relation');
-        const guardianConsent = step.querySelector('#tk-guardian-consent');
         const guardianCanvas = step.querySelector('#tk-guardian-signature-canvas');
         const guardianClearButton = step.querySelector('#tk-guardian-signature-clear');
         const guardianSignatureData = step.querySelector('#tk-guardian-signature-data');
-        const birthDateInput = app.querySelector('#tk-birth-date');
+        const guardianContext = guardianCanvas.getContext('2d');
+        let drawing = false;
+        let hasSignature = false;
+        let lastPoint = null;
+        let guardianDrawing = false;
+        let guardianHasSignature = false;
+        let guardianLastPoint = null;
+
+        function isMinor() {
+            const day = Number(app.querySelector('#tk-birth-day')?.value || 0);
+            const month = Number(app.querySelector('#tk-birth-month')?.value || 0);
+            const year = Number(app.querySelector('#tk-birth-year')?.value || 0);
+            if (!day || !month || !year) return false;
+            const today = new Date();
+            let age = today.getFullYear() - year;
+            const birthdayThisYear = new Date(today.getFullYear(), month - 1, day);
+            if (today < birthdayThisYear) age -= 1;
+            return age < 18;
+        }
+
+        function updateGuardianVisibility() {
+            const minor = isMinor();
+            guardianSection.hidden = !minor;
+            guardianName.required = minor;
+            guardianRelation.required = minor;
+            if (!minor) {
+                guardianName.value = '';
+                guardianRelation.value = '';
+                clearGuardianSignature();
+            } else {
+                window.requestAnimationFrame(resizeGuardianCanvas);
+            }
+            return minor;
+        }
 
         function setDate() {
             const now = new Date();
@@ -537,235 +536,212 @@
             ].join('-');
         }
 
-        function createSignaturePad(targetCanvas, clearControl, dataInput) {
-            const context = targetCanvas.getContext('2d');
-            let drawing = false;
-            let hasSignature = false;
-            let lastPoint = null;
-            let savedImage = '';
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            const rect = canvas.getBoundingClientRect();
+            const previous = hasSignature ? canvas.toDataURL('image/png') : '';
 
-            function configureContext() {
-                context.lineWidth = 2.4;
-                context.lineCap = 'round';
-                context.lineJoin = 'round';
-                context.strokeStyle = '#171717';
+            canvas.width = Math.round(rect.width * ratio);
+            canvas.height = Math.round(190 * ratio);
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+            context.lineWidth = 2.4;
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+            context.strokeStyle = '#171717';
+
+            if (previous) {
+                const image = new Image();
+                image.onload = function () {
+                    context.drawImage(image, 0, 0, rect.width, 190);
+                    updateSignatureData();
+                };
+                image.src = previous;
             }
+        }
 
-            function resize() {
-                const rect = targetCanvas.getBoundingClientRect();
-                if (rect.width < 10 || rect.height < 10) {
-                    return;
-                }
+        function getPoint(event) {
+            const rect = canvas.getBoundingClientRect();
 
-                const snapshot = hasSignature ? targetCanvas.toDataURL('image/png') : savedImage;
-                const ratio = Math.max(window.devicePixelRatio || 1, 1);
-                targetCanvas.width = Math.round(rect.width * ratio);
-                targetCanvas.height = Math.round(190 * ratio);
-                context.setTransform(ratio, 0, 0, ratio, 0, 0);
-                configureContext();
-
-                if (snapshot) {
-                    const image = new Image();
-                    image.onload = function () {
-                        context.drawImage(image, 0, 0, rect.width, 190);
-                        savedImage = targetCanvas.toDataURL('image/png');
-                        dataInput.value = savedImage;
-                    };
-                    image.src = snapshot;
-                }
-            }
-
-            function pointFromEvent(event) {
-                const rect = targetCanvas.getBoundingClientRect();
-                const source = event.touches && event.touches[0] ? event.touches[0] : event;
-                return {x: source.clientX - rect.left, y: source.clientY - rect.top};
-            }
-
-            function begin(event) {
-                if (event.button !== undefined && event.button !== 0) {
-                    return;
-                }
-                event.preventDefault();
-                resize();
-                drawing = true;
-                lastPoint = pointFromEvent(event);
-                context.beginPath();
-                context.arc(lastPoint.x, lastPoint.y, 1.2, 0, Math.PI * 2);
-                context.fillStyle = '#171717';
-                context.fill();
-                hasSignature = true;
-                if (event.pointerId !== undefined && targetCanvas.setPointerCapture) {
-                    targetCanvas.setPointerCapture(event.pointerId);
-                }
-            }
-
-            function move(event) {
-                if (!drawing) return;
-                event.preventDefault();
-                const point = pointFromEvent(event);
-                context.beginPath();
-                context.moveTo(lastPoint.x, lastPoint.y);
-                context.lineTo(point.x, point.y);
-                context.stroke();
-                lastPoint = point;
-                hasSignature = true;
-            }
-
-            function finish(event) {
-                if (!drawing) return;
-                event.preventDefault();
-                drawing = false;
-                lastPoint = null;
-                savedImage = targetCanvas.toDataURL('image/png');
-                dataInput.value = savedImage;
-                if (event.pointerId !== undefined && targetCanvas.hasPointerCapture && targetCanvas.hasPointerCapture(event.pointerId)) {
-                    targetCanvas.releasePointerCapture(event.pointerId);
-                }
-            }
-
-            function clear() {
-                context.clearRect(0, 0, targetCanvas.width, targetCanvas.height);
-                hasSignature = false;
-                savedImage = '';
-                dataInput.value = '';
-                errorBox.hidden = true;
-                successBox.hidden = true;
-            }
-
-            if (window.PointerEvent) {
-                targetCanvas.addEventListener('pointerdown', begin, {passive: false});
-                targetCanvas.addEventListener('pointermove', move, {passive: false});
-                targetCanvas.addEventListener('pointerup', finish, {passive: false});
-                targetCanvas.addEventListener('pointercancel', finish, {passive: false});
-                targetCanvas.addEventListener('pointerleave', function (event) {
-                    if (drawing && (!event.buttons || event.pointerType === 'touch')) finish(event);
-                }, {passive: false});
-            } else {
-                targetCanvas.addEventListener('mousedown', begin);
-                targetCanvas.addEventListener('mousemove', move);
-                window.addEventListener('mouseup', finish);
-                targetCanvas.addEventListener('touchstart', begin, {passive: false});
-                targetCanvas.addEventListener('touchmove', move, {passive: false});
-                targetCanvas.addEventListener('touchend', finish, {passive: false});
-            }
-
-            clearControl.addEventListener('click', clear);
             return {
-                resize: resize,
-                clear: clear,
-                hasSignature: function () { return hasSignature && Boolean(dataInput.value); },
-                data: function () { return dataInput.value; }
+                x: event.clientX - rect.left,
+                y: event.clientY - rect.top
             };
         }
 
-        const customerPad = createSignaturePad(canvas, clearButton, signatureData);
-        const guardianPad = createSignaturePad(guardianCanvas, guardianClearButton, guardianSignatureData);
-
-        function calculateAge(dateString) {
-            if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString || '')) return null;
-            const parts = dateString.split('-').map(Number);
-            const birth = new Date(parts[0], parts[1] - 1, parts[2]);
-            if (Number.isNaN(birth.getTime())) return null;
-            const today = new Date();
-            let age = today.getFullYear() - birth.getFullYear();
-            const beforeBirthday = today.getMonth() < birth.getMonth() ||
-                (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate());
-            if (beforeBirthday) age -= 1;
-            return age;
+        function startDrawing(event) {
+            event.preventDefault();
+            drawing = true;
+            lastPoint = getPoint(event);
+            canvas.setPointerCapture(event.pointerId);
         }
 
-        function updateMinorState() {
-            const age = calculateAge(birthDateInput ? birthDateInput.value : '');
-            const isMinor = age !== null && age < 18;
-            minorSection.hidden = !isMinor;
-            guardianName.required = isMinor;
-            guardianRelation.required = isMinor;
-            guardianConsent.required = isMinor;
-            ageConsentText.textContent = isMinor
-                ? 'Ich bin minderjährig. Die Einwilligung erfolgt zusätzlich durch meinen Erziehungsberechtigten.'
-                : 'Ich habe das 18. Lebensjahr vollendet.';
-            if (!isMinor) guardianPad.clear();
-            window.requestAnimationFrame(function () {
-                customerPad.resize();
-                if (isMinor) guardianPad.resize();
-            });
-            return isMinor;
-        }
-
-        const visibilityObserver = new MutationObserver(function () {
-            if (!step.hidden) {
-                updateMinorState();
-                window.requestAnimationFrame(function () {
-                    customerPad.resize();
-                    if (!minorSection.hidden) guardianPad.resize();
-                });
+        function draw(event) {
+            if (!drawing) {
+                return;
             }
-        });
-        visibilityObserver.observe(step, {attributes: true, attributeFilter: ['hidden']});
 
-        if (window.ResizeObserver) {
-            const resizeObserver = new ResizeObserver(function () {
-                if (!step.hidden) {
-                    customerPad.resize();
-                    if (!minorSection.hidden) guardianPad.resize();
-                }
-            });
-            resizeObserver.observe(step);
+            event.preventDefault();
+
+            const point = getPoint(event);
+            context.beginPath();
+            context.moveTo(lastPoint.x, lastPoint.y);
+            context.lineTo(point.x, point.y);
+            context.stroke();
+
+            lastPoint = point;
+            hasSignature = true;
         }
+
+        function stopDrawing(event) {
+            if (!drawing) {
+                return;
+            }
+
+            event.preventDefault();
+            drawing = false;
+            lastPoint = null;
+            updateSignatureData();
+
+            if (canvas.hasPointerCapture(event.pointerId)) {
+                canvas.releasePointerCapture(event.pointerId);
+            }
+        }
+
+        function updateSignatureData() {
+            signatureData.value = hasSignature ? canvas.toDataURL('image/png') : '';
+        }
+
+        function clearSignature() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            hasSignature = false;
+            signatureData.value = '';
+            errorBox.hidden = true;
+            successBox.hidden = true;
+        }
+
+        function resizeGuardianCanvas() {
+            if (guardianSection.hidden) return;
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            const rect = guardianCanvas.getBoundingClientRect();
+            const previous = guardianHasSignature ? guardianCanvas.toDataURL('image/png') : '';
+            guardianCanvas.width = Math.round(rect.width * ratio);
+            guardianCanvas.height = Math.round(190 * ratio);
+            guardianContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+            guardianContext.lineWidth = 2.4;
+            guardianContext.lineCap = 'round';
+            guardianContext.lineJoin = 'round';
+            guardianContext.strokeStyle = '#171717';
+            if (previous) {
+                const image = new Image();
+                image.onload = function () {
+                    guardianContext.drawImage(image, 0, 0, rect.width, 190);
+                    guardianSignatureData.value = guardianCanvas.toDataURL('image/png');
+                };
+                image.src = previous;
+            }
+        }
+
+        function getGuardianPoint(event) {
+            const rect = guardianCanvas.getBoundingClientRect();
+            return {x: event.clientX - rect.left, y: event.clientY - rect.top};
+        }
+
+        function startGuardianDrawing(event) {
+            event.preventDefault();
+            guardianDrawing = true;
+            guardianLastPoint = getGuardianPoint(event);
+            guardianCanvas.setPointerCapture(event.pointerId);
+        }
+
+        function drawGuardian(event) {
+            if (!guardianDrawing) return;
+            event.preventDefault();
+            const point = getGuardianPoint(event);
+            guardianContext.beginPath();
+            guardianContext.moveTo(guardianLastPoint.x, guardianLastPoint.y);
+            guardianContext.lineTo(point.x, point.y);
+            guardianContext.stroke();
+            guardianLastPoint = point;
+            guardianHasSignature = true;
+        }
+
+        function stopGuardianDrawing(event) {
+            if (!guardianDrawing) return;
+            event.preventDefault();
+            guardianDrawing = false;
+            guardianLastPoint = null;
+            guardianSignatureData.value = guardianHasSignature ? guardianCanvas.toDataURL('image/png') : '';
+            if (guardianCanvas.hasPointerCapture(event.pointerId)) guardianCanvas.releasePointerCapture(event.pointerId);
+        }
+
+        function clearGuardianSignature() {
+            guardianContext.clearRect(0, 0, guardianCanvas.width, guardianCanvas.height);
+            guardianHasSignature = false;
+            guardianSignatureData.value = '';
+        }
+
+        canvas.addEventListener('pointerdown', startDrawing);
+        canvas.addEventListener('pointermove', draw);
+        canvas.addEventListener('pointerup', stopDrawing);
+        canvas.addEventListener('pointercancel', stopDrawing);
+        clearButton.addEventListener('click', clearSignature);
+        guardianCanvas.addEventListener('pointerdown', startGuardianDrawing);
+        guardianCanvas.addEventListener('pointermove', drawGuardian);
+        guardianCanvas.addEventListener('pointerup', stopGuardianDrawing);
+        guardianCanvas.addEventListener('pointercancel', stopGuardianDrawing);
+        guardianClearButton.addEventListener('click', clearGuardianSignature);
 
         window.addEventListener('resize', function () {
-            if (!step.hidden) {
-                window.requestAnimationFrame(function () {
-                    customerPad.resize();
-                    if (!minorSection.hidden) guardianPad.resize();
-                });
-            }
+            window.requestAnimationFrame(resizeCanvas);
+            window.requestAnimationFrame(resizeGuardianCanvas);
         });
 
         consentForm.addEventListener('submit', function (event) {
             event.preventDefault();
             errorBox.hidden = true;
             successBox.hidden = true;
-            const isMinor = updateMinorState();
 
             if (!consentForm.checkValidity()) {
                 consentForm.reportValidity();
                 return;
             }
 
-            if (!customerPad.hasSignature()) {
+            if (!hasSignature || !signatureData.value) {
                 errorBox.textContent = 'Bitte unterschreibe im Unterschriftsfeld.';
                 errorBox.hidden = false;
                 canvas.focus();
                 return;
             }
 
-            if (isMinor && !guardianPad.hasSignature()) {
-                errorBox.textContent = 'Bitte ergänze die Unterschrift des Erziehungsberechtigten.';
+            const minor = updateGuardianVisibility();
+            if (minor && (!guardianHasSignature || !guardianSignatureData.value)) {
+                errorBox.textContent = 'Bitte lasse die erziehungsberechtigte Person unterschreiben.';
                 errorBox.hidden = false;
                 guardianCanvas.focus();
                 return;
             }
 
+            updateSignatureData();
             successBox.hidden = false;
+
             app.dispatchEvent(new CustomEvent('tattookunst:consent-complete', {
                 detail: {
                     informed: true,
                     bodilyInjuryConsent: true,
-                    signatureData: customerPad.data(),
+                    signatureData: signatureData.value,
                     consentDate: dateValue.value,
                     consentCity: 'Rosenheim',
-                    isMinor: isMinor,
-                    guardianName: isMinor ? guardianName.value.trim() : '',
-                    guardianRelation: isMinor ? guardianRelation.value : '',
-                    guardianConsent: isMinor,
-                    guardianSignatureData: isMinor ? guardianPad.data() : ''
+                    isMinor: minor,
+                    guardianName: minor ? guardianName.value : '',
+                    guardianRelation: minor ? guardianRelation.value : '',
+                    guardianSignatureData: minor ? guardianSignatureData.value : ''
                 }
             }));
         });
 
         setDate();
-        updateMinorState();
+        updateGuardianVisibility();
+        window.requestAnimationFrame(resizeCanvas);
     }
 
     if (document.readyState === 'loading') {

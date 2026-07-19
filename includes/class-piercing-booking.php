@@ -76,9 +76,19 @@ class PiercingBooking {
                 continue;
             }
 
+            $weekday_names = [
+                1 => 'Montag',
+                2 => 'Dienstag',
+                3 => 'Mittwoch',
+                4 => 'Donnerstag',
+                5 => 'Freitag',
+                6 => 'Samstag',
+                7 => 'Sonntag',
+            ];
+
             $appointment_days[] = [
                 'date' => $day->format('Y-m-d'),
-                'weekday' => wp_date('l', $day->getTimestamp(), $timezone),
+                'weekday' => $weekday_names[$weekday],
                 'label' => wp_date('d.m.Y', $day->getTimestamp(), $timezone),
                 'slots' => $slots,
             ];
