@@ -451,6 +451,25 @@ Für Piercing-Termine gilt:
 - Minderjährige werden automatisch auffällig markiert
 - Termine können intern verschoben oder abgesagt werden
 
+### Verfügbarkeit für Piercing-Termine
+
+- Online buchbare Piercing-Termine gibt es nur Dienstag bis Freitag.
+- Buchbare Zeit: 16:00 bis 18:00 Uhr.
+- Es werden nur freie 20- oder 40-Minuten-Zeitfenster angeboten.
+- Tattoo-Termine haben Vorrang und blockieren den gesamten belegten Zeitraum.
+- Liegt ein Tattoo-Termin in einem Piercing-Zeitfenster, wird dieses Zeitfenster nicht angeboten.
+
+### Montag ohne Terminbuchung
+
+Montag von 16:00 bis 19:00 Uhr ist offene Zeit ohne Terminbuchung.
+
+In dieser Zeit sind möglich:
+
+- Tattoo-Beratung
+- Piercing ohne Termin
+
+Montags werden online keine Piercing- oder Beratungstermine angeboten.
+
 ### Dauer abhängig von der Anzahl der Piercings
 
 - 1 bis 4 Piercings: 20 Minuten
