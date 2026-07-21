@@ -375,7 +375,16 @@ markieren.
 
 ## 15. Kalender und Geräte
 
-Das Tattookunst-CRM ist der Hauptkalender und die zentrale Datenquelle.
+Das Tattookunst-CRM erhält einen vollständig eigenen, geschützten Kalender.
+
+Es gibt:
+
+- keine Google-Kalender-Anbindung
+- keine Apple-Kalender-Anbindung
+- keine externe Synchronisierung
+- keine Weitergabe von Kundendaten an externe Kalenderdienste
+
+Der Kalender bleibt vollständig im Tattookunst-CRM.
 
 Das CRM muss auf folgenden Geräten vollständig bedienbar sein:
 
@@ -396,13 +405,25 @@ Auf jedem Gerät müssen Termine:
 
 werden können.
 
-Änderungen werden zentral gespeichert und sind anschließend auf allen Geräten sichtbar.
+Änderungen werden zentral im CRM gespeichert und sind anschließend auf allen Geräten sichtbar.
 
-Eine externe Kalenderansicht kann später zusätzlich synchronisiert werden.
+### Erste Kalender-Version für Piercing
 
-Der externe Kalender ist nicht die führende Datenquelle.
+Für Piercing-Termine gilt:
 
----
+- Termine nur Dienstag bis Freitag
+- buchbare Zeit von 16:00 bis 18:00 Uhr
+- feste 20-Minuten-Zeitfenster
+- erster Termin um 16:00 Uhr
+- letzter möglicher Terminbeginn um 17:40 Uhr
+- im Kalender sichtbar: Vorname, Nachname und Piercingart beziehungsweise Piercingarten
+- Beispiel: „Anna Muster – Helix + Tragus“
+- beim Anklicken öffnet sich die Terminansicht
+- von dort kann die vollständige Kundenakte geöffnet werden
+- Minderjährige werden automatisch auffällig markiert
+- Termine können intern verschoben oder abgesagt werden
+
+Der Kalender ist passwortgeschützt und unterliegt der automatischen Sperre des CRM.
 
 ## 16. Interne Zahlungsangaben
 
