@@ -41,6 +41,7 @@ Gespeichert werden insbesondere:
 - Geburtsdatum
 - Mobilnummer
 - E-Mail-Adresse
+- E-Mail-Adresse bestätigen
 - bevorzugte Kontaktart
 - bei Telegram zusätzlich der Telegram-Benutzername
 - ausgewählte Piercingart oder mehrere Piercingarten
@@ -147,7 +148,34 @@ Der Startbereich zeigt neue und offene Vorgänge, die Aufmerksamkeit benötigen.
 
 ---
 
-## 7. Bestätigungsseite nach der Buchung
+## 7. Prüfen und bestätigen
+
+Vor dem endgültigen Absenden erscheint eine übersichtliche Zusammenfassung.
+
+Angezeigt werden:
+
+- Vorname und Nachname
+- Mobilnummer
+- E-Mail-Adresse
+- bevorzugte Kontaktart
+- Piercingart beziehungsweise Piercingarten
+- Anzahl
+- Datum
+- Uhrzeit
+- Dauer
+- Gesamtpreis
+
+Der Kunde kann einzelne Angaben noch einmal ändern.
+
+Der endgültige Button lautet:
+
+**Verbindlich buchen**
+
+Erst nach diesem Klick wird die Piercing-Buchung gespeichert, das passende Zeitfenster blockiert und die Bestätigungs-E-Mail verschickt.
+
+---
+
+## 8. Bestätigungsseite nach der Buchung
 
 Nach erfolgreichem Absenden verschwindet das Buchungsformular.
 
@@ -184,7 +212,7 @@ Diese sensiblen Inhalte bleiben sicher im CRM gespeichert.
 
 ---
 
-## 8. Bestätigungs-E-Mail
+## 9. Bestätigungs-E-Mail
 
 Die Buchungsbestätigung wird immer per E-Mail verschickt, unabhängig von der bevorzugten Kontaktart.
 
@@ -234,7 +262,7 @@ Nicht per E-Mail verschickt werden:
 
 ---
 
-## 9. Pflegehinweise
+## 10. Pflegehinweise
 
 Es gibt eine allgemeine Pflegeanleitung für alle Piercings.
 
@@ -250,7 +278,7 @@ Im CRM wird nur gespeichert, ob die Bestätigungs-E-Mail erfolgreich versendet w
 
 ---
 
-## 10. Fehler beim Versand der Bestätigungs-E-Mail
+## 11. Fehler beim Versand der Bestätigungs-E-Mail
 
 Kann die Piercing-Bestätigungs-E-Mail nicht versendet werden, erscheint im Startbereich des CRM eine offene Aufgabe:
 
@@ -273,7 +301,7 @@ Die Aufgabe bleibt sichtbar, bis:
 
 ---
 
-## 11. Bevorzugte Kontaktart
+## 12. Bevorzugte Kontaktart
 
 Beim Piercing wird dieselbe bereits funktionierende Kontaktlogik wie beim Tattoo verwendet.
 
@@ -296,7 +324,7 @@ Die Buchungsbestätigung mit Pflege-PDF wird weiterhin immer per E-Mail versende
 
 ---
 
-## 12. 48-Stunden-Terminerinnerung
+## 13. 48-Stunden-Terminerinnerung
 
 48 Stunden vor dem Piercing-Termin wird automatisch eine kurze Erinnerung über die bevorzugte Kontaktart versendet.
 
@@ -325,7 +353,7 @@ Kann eine reine Terminerinnerung nicht zugestellt werden, wird dafür keine zus�
 
 ---
 
-## 13. Termin verschieben
+## 14. Termin verschieben
 
 Der Kunde kann seinen Piercing-Termin über den persönlichen Link aus der Bestätigungs-E-Mail selbst verschieben.
 
@@ -342,7 +370,7 @@ Regeln:
 
 ---
 
-## 14. Termin absagen
+## 15. Termin absagen
 
 Der Kunde kann seinen Piercing-Termin über den persönlichen Link jederzeit absagen.
 
@@ -373,7 +401,7 @@ markieren.
 
 ---
 
-## 15. Kalender und Geräte
+## 16. Kalender und Geräte
 
 Das Tattookunst-CRM erhält einen vollständig eigenen, geschützten Kalender.
 
@@ -423,9 +451,17 @@ Für Piercing-Termine gilt:
 - Minderjährige werden automatisch auffällig markiert
 - Termine können intern verschoben oder abgesagt werden
 
+### Dauer abhängig von der Anzahl der Piercings
+
+- 1 bis 4 Piercings: 20 Minuten
+- ab 5 Piercings: 40 Minuten
+- bei 40 Minuten müssen zwei direkt aufeinanderfolgende 20-Minuten-Zeitfenster frei sein
+- letzter möglicher Beginn für einen 40-Minuten-Termin ist 17:20 Uhr
+- bei 40 Minuten werden beide Zeitfenster im Kalender blockiert
+
 Der Kalender ist passwortgeschützt und unterliegt der automatischen Sperre des CRM.
 
-## 16. Interne Zahlungsangaben
+## 17. Interne Zahlungsangaben
 
 Die Zahlungsangaben sind nur für Chris im CRM sichtbar.
 
@@ -451,7 +487,7 @@ Beim Tattoo wird die Zahlungsverwaltung später ausführlicher behandelt, da dor
 
 ---
 
-## 17. Bewertungsanfrage
+## 18. Bewertungsanfrage
 
 Die Bewertungsfunktion wird gemeinsam für Tattoo und Piercing verwendet.
 
@@ -493,7 +529,7 @@ Das Versanddatum kann im Hintergrund gespeichert werden, muss aber in der normal
 
 ---
 
-## 18. Vollständige Löschbarkeit
+## 19. Vollständige Löschbarkeit
 
 Im gesamten CRM müssen alle Daten gezielt und dauerhaft löschbar sein.
 
@@ -540,7 +576,7 @@ Nach einer bestätigten vollständigen Löschung darf keine versteckte Kopie im 
 
 ---
 
-## 19. Zugangsschutz des gesamten CRM
+## 20. Zugangsschutz des gesamten CRM
 
 Das gesamte Tattookunst-CRM wird durch einen persönlichen Zugang geschützt.
 
@@ -559,7 +595,7 @@ Nur Chris soll Zugriff auf die vollständigen Kundendaten, Gesundheitsinformatio
 
 ---
 
-## 20. Noch vor der Umsetzung zu prüfen
+## 21. Noch vor der Umsetzung zu prüfen
 
 Vor Änderungen am Code wird geprüft:
 
