@@ -108,3 +108,80 @@ Vor jeder technischen Umsetzung müssen diese Fragen beantwortet sein:
 Stabilität geht vor Geschwindigkeit.
 
 Eine kleinere saubere Änderung ist besser als eine große Änderung, die mehrere funktionierende Bereiche gleichzeitig betrifft.
+
+## Terminänderungen
+
+Änderungen an einem Termin werden nicht sofort automatisch übernommen.
+
+Erst nach dem Klick auf:
+
+**Änderung speichern**
+
+wird der neue Stand verbindlich gespeichert.
+
+Das gilt insbesondere für:
+
+- Datum
+- Startzeit
+- Endzeit
+- Status
+- interne Notizen
+- Zuordnung zum Kunden
+- Zuordnung zur Buchung oder zum Projekt
+
+---
+
+## Vollständiges Löschen eines Kunden
+
+Beim vollständigen Löschen eines Kunden muss eine deutliche Sicherheitsabfrage erscheinen.
+
+Dabei muss klar genannt werden, dass auch alle verbundenen Daten gelöscht werden, insbesondere:
+
+- Anfragen
+- Tattoo-Projekte
+- Piercing-Buchungen
+- Termine
+- Bilder
+- Dokumente
+- Gesundheitsfragebögen
+- Einverständniserklärungen
+- Unterschriften
+- Zahlungen
+- Notizen
+- Versandprotokolle
+
+Die vollständige Löschung darf erst nach einer zweiten ausdrücklichen Bestätigung ausgeführt werden.
+
+Einzelne Termine, Projekte, Buchungen, Dokumente und andere Einträge bleiben weiterhin auch separat löschbar.
+
+---
+
+## Tattoo-Walk-in
+
+Das CRM erhält einen eigenen schnellen Bereich:
+
+**Tattoo-Walk-in**
+
+Dieser Ablauf ist für spontane kleine Tattoos direkt im Studio gedacht.
+
+Er soll kurz und schnell ausfüllbar sein.
+
+Mindestens enthalten:
+
+- Vorname und Nachname
+- Geburtsdatum
+- Mobilnummer oder E-Mail, soweit gewünscht
+- kurze Bezeichnung des Tattoos
+- Körperstelle
+- Preis
+- Datum
+- Startzeit
+- Endzeit
+- Bestätigung der Volljährigkeit
+- kurze Einverständniserklärung
+- Unterschrift
+- bei Minderjährigen die erforderlichen Angaben und Unterschrift der erziehungsberechtigten Person
+
+Nach dem Abschluss wird der Walk-in als Kunde beziehungsweise Vorgang gespeichert und im CRM-Kalender eingetragen.
+
+Die genauen rechtlichen Texte werden nicht neu formuliert, sondern später aus den vorhandenen rechtlich geprüften Unterlagen übernommen.
