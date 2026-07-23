@@ -185,3 +185,49 @@ Mindestens enthalten:
 Nach dem Abschluss wird der Walk-in als Kunde beziehungsweise Vorgang gespeichert und im CRM-Kalender eingetragen.
 
 Die genauen rechtlichen Texte werden nicht neu formuliert, sondern später aus den vorhandenen rechtlich geprüften Unterlagen übernommen.
+
+## Geschützte Dokumentenablage
+
+Für jeden gespeicherten Vorgang gibt es einen geschützten Bereich:
+
+**Dokumente**
+
+Dort werden getrennt gespeichert:
+
+- Gesundheitsfragebogen
+- Einverständniserklärung
+- Kundenunterschrift
+- bei Minderjährigen die Angaben zur erziehungsberechtigten Person
+- bei Minderjährigen die Unterschrift der erziehungsberechtigten Person
+- später weitere rechtliche Unterlagen
+
+Jedes Dokument wird eindeutig zugeordnet zu:
+
+- dem Kunden
+- Tattoo oder Piercing
+- dem konkreten Projekt beziehungsweise der Buchung
+
+In der normalen Kundenansicht wird zunächst nur angezeigt, welche Dokumente vorhanden sind.
+
+Beispiel:
+
+- Gesundheitsfragebogen – vorhanden
+- Einverständniserklärung – vorhanden
+- Kundenunterschrift – vorhanden
+- Erziehungsberechtigte Person – nicht erforderlich
+
+Der vollständige Inhalt wird erst beim gezielten Öffnen angezeigt.
+
+### Unterschriebene Dokumente
+
+Ein bereits unterschriebener Gesundheitsfragebogen oder eine bereits unterschriebene Einverständniserklärung darf nicht nachträglich verändert werden.
+
+Muss etwas korrigiert werden, wird eine neue Version erstellt und erneut unterschrieben.
+
+Die ursprüngliche Version bleibt erhalten, bis sie ausdrücklich gelöscht wird.
+
+In der Kundenakte muss klar erkennbar sein, welche Version aktuell ist.
+
+Alle Dokumente und einzelnen Versionen bleiben gezielt löschbar.
+
+Beim vollständigen Löschen eines Kunden werden auch alle zugehörigen Dokumente und Versionen vollständig gelöscht.
