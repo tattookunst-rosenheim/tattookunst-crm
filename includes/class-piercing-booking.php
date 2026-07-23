@@ -194,6 +194,31 @@ $email_confirmation = sanitize_email(
     wp_unslash($_POST['email_confirmation'] ?? '')
 );
 
+$contact_method = sanitize_text_field(
+    wp_unslash($_POST['contact_method'] ?? '')
+);
+
+$telegram_username = sanitize_text_field(
+    wp_unslash($_POST['telegram_username'] ?? '')
+);
+
+$allowed_contact_methods = [
+    'email',
+    'whatsapp',
+    'telegram',
+];
+
+if (!in_array($contact_method, $allowed_contact_methods, true)) {
+    wp_die('Bitte wähle eine gültige Kontaktart aus.');
+}
+
+if (
+    $contact_method === 'telegram' &&
+    empty($telegram_username)
+) {
+    wp_die('Bitte gib deinen Telegram-Benutzernamen an.');
+}
+
 if (
     empty($email) ||
     empty($email_confirmation) ||
