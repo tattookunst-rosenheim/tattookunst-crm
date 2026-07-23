@@ -186,4 +186,19 @@ if (
 ) {
     wp_die('Sicherheitsprüfung fehlgeschlagen.');
 }
+$email = sanitize_email(
+    wp_unslash($_POST['email'] ?? '')
+);
+
+$email_confirmation = sanitize_email(
+    wp_unslash($_POST['email_confirmation'] ?? '')
+);
+
+if (
+    empty($email) ||
+    empty($email_confirmation) ||
+    $email !== $email_confirmation
+) {
+    wp_die('Die beiden E-Mail-Adressen stimmen nicht überein.');
+}
 }
