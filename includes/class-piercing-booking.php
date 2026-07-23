@@ -11,6 +11,11 @@ class PiercingBooking {
             'tattookunst_piercing_beratung',
             [__CLASS__, 'render_shortcode']
         );
+
+        add_action(
+    'init',
+    [__CLASS__, 'handle_booking']
+);
     }
 
     public static function render_shortcode() {
@@ -163,4 +168,6 @@ class PiercingBooking {
             ],
         ];
     }
+}public static function handle_booking() {
+    // Wird im nächsten Schritt mit der Piercing-Speicherung gefüllt.
 }
