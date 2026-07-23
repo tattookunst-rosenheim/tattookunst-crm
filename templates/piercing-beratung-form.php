@@ -701,6 +701,30 @@ if (!defined('ABSPATH')) {
     >
 </div>
 
+<div class="tk-form-field tk-full-width">
+    <label for="tk-contact-method">Bevorzugte Kontaktart *</label>
+    <select id="tk-contact-method" name="contact_method" required>
+        <option value="">Bitte auswählen</option>
+        <option value="email">E-Mail</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="telegram">Telegram</option>
+    </select>
+</div>
+
+<div
+    class="tk-form-field tk-full-width"
+    id="tk-telegram-field"
+    hidden
+>
+    <label for="tk-telegram-username">Telegram-Benutzername *</label>
+    <input
+        id="tk-telegram-username"
+        name="telegram_username"
+        type="text"
+        autocomplete="off"
+    >
+</div>
+
             <div class="tk-booking-actions">
                 <button type="button" class="tk-button tk-button-secondary" data-back="appointments">
                     Zurück
@@ -964,6 +988,22 @@ if (!defined('ABSPATH')) {
     const appointmentLabel = app.querySelector('#tk-appointment-label');
     const selectedAppointment = app.querySelector('#tk-selected-appointment');
     const customerForm = app.querySelector('#tk-customer-form');
+    const contactMethod = app.querySelector('#tk-contact-method');
+const telegramField = app.querySelector('#tk-telegram-field');
+const telegramUsername = app.querySelector('#tk-telegram-username');
+function updateTelegramField() {
+    const isTelegram = contactMethod.value === 'telegram';
+
+    telegramField.hidden = !isTelegram;
+    telegramUsername.required = isTelegram;
+
+    if (!isTelegram) {
+        telegramUsername.value = '';
+    }
+}
+
+contactMethod.addEventListener('change', updateTelegramField);
+updateTelegramField();
     const birthDay = app.querySelector('#tk-birth-day');
     const birthMonth = app.querySelector('#tk-birth-month');
     const birthYear = app.querySelector('#tk-birth-year');
