@@ -168,7 +168,7 @@ class PiercingBooking {
             ],
         ];
     }
-}public static function handle_booking() {
+    public static function handle_booking() {
     if (
     empty($_POST['tattookunst_piercing_action']) ||
     $_POST['tattookunst_piercing_action'] !== 'save_piercing_booking'
