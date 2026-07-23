@@ -689,6 +689,18 @@ if (!defined('ABSPATH')) {
                 </div>
             </div>
 
+            <div class="tk-form-field tk-full-width">
+    <label for="tk-email-confirmation">E-Mail-Adresse wiederholen *</label>
+    <input
+        id="tk-email-confirmation"
+        name="email_confirmation"
+        type="email"
+        autocomplete="email"
+        inputmode="email"
+        required
+    >
+</div>
+
             <div class="tk-booking-actions">
                 <button type="button" class="tk-button tk-button-secondary" data-back="appointments">
                     Zurück
