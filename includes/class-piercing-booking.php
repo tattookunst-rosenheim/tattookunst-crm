@@ -226,4 +226,28 @@ if (
 ) {
     wp_die('Die beiden E-Mail-Adressen stimmen nicht überein.');
 }
+$first_name = sanitize_text_field(
+    wp_unslash($_POST['first_name'] ?? '')
+);
+
+$last_name = sanitize_text_field(
+    wp_unslash($_POST['last_name'] ?? '')
+);
+
+$mobile = sanitize_text_field(
+    wp_unslash($_POST['mobile'] ?? '')
+);
+
+$birthday = sanitize_text_field(
+    wp_unslash($_POST['birth_date'] ?? '')
+);
+
+if (
+    empty($first_name) ||
+    empty($last_name) ||
+    empty($mobile) ||
+    empty($birthday)
+) {
+    wp_die('Bitte fülle alle persönlichen Pflichtfelder vollständig aus.');
+}
 }
