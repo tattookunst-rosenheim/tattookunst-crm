@@ -169,5 +169,21 @@ class PiercingBooking {
         ];
     }
 }public static function handle_booking() {
-    // Wird im nächsten Schritt mit der Piercing-Speicherung gefüllt.
+    if (
+    empty($_POST['tattookunst_piercing_action']) ||
+    $_POST['tattookunst_piercing_action'] !== 'save_piercing_booking'
+) {
+    return;
+}
+if (
+    empty($_POST['tattookunst_piercing_nonce']) ||
+    !wp_verify_nonce(
+        sanitize_text_field(
+            wp_unslash($_POST['tattookunst_piercing_nonce'])
+        ),
+        'tattookunst_save_piercing_booking'
+    )
+) {
+    wp_die('Sicherheitsprüfung fehlgeschlagen.');
+}
 }
